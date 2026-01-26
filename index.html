@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KiDOM Sesión: Creadores (S2 - Día 1)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Raleway:wght@800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --kidom-blue: #2667ff;
+            --kidom-yellow-accent: #FBBF24; 
+            --dark-text: #1F2937;
+            --medium-text: #4B5563; 
+            --light-bg: #F3F4F6;
+        }
+
+        /* --- AJUSTE PARA TV: Zoom automático --- */
+        @media screen and (min-width: 1500px) {
+            body { zoom: 1.25; } 
+        }
+
+        html, body { 
+            height: 100%; 
+            width: 100%;
+            margin: 0; 
+            padding: 0; 
+            overflow: hidden; 
+            font-family: 'Montserrat', sans-serif; 
+            background-color: var(--light-bg);
+        }
+
+        #slides-container { 
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        
+        .slide { 
+            display: none; 
+            width: 100%; 
+            height: 100%;
+            flex-direction: column; 
+            position: relative; 
+            overflow: hidden; 
+        }
+        @media (min-width: 768px) {
+            .slide {
+                flex-direction: row; 
+            }
+        }
+        .slide.active { display: flex; }
+
+        /* ----- COLUMNA IZQUIERDA (BLANCA) ----- */
+        .image-column {
+            width: 100%;
+            background-color: #FFFFFF;
+            padding: 2rem;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 50%; 
+            border-top: 2mm solid var(--kidom-blue);
+            border-left: 2mm solid var(--kidom-blue);
+            border-bottom: 2mm solid var(--kidom-blue);
+            border-right: none;
+        }
+        
+        .image-column-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .top-logo-placeholder {
+            width: 100%;
+            max-width: 300px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            flex-shrink: 0;
+        }
+        .top-logo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .image-guide { 
+            width: 100%;
+            height: 100%;
+            max-width: 90%; 
+            max-height: 34.5vh; 
+            margin-left: auto;
+            margin-right: auto;
+            display: flex; 
+            align-items: center;
+            justify-content: center;
+            border-radius: 0.5rem;
+            background-color: var(--light-bg);
+            color: var(--kidom-blue);
+            font-weight: 700;
+            font-size: 1.5rem; 
+            text-align: center;
+            object-fit: contain; 
+            flex-grow: 1; 
+            border: none;
+        }
+        
+        .bottom-values-container {
+            margin-top: 1.5rem;
+            text-align: center;
+            padding: 0 0.5rem; 
+            flex-shrink: 0;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            gap: 0.5rem; 
+        }
+        .value-line {
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            gap: 0.5rem; 
+        }
+        .value-item { 
+            display: inline-flex;
+            align-items: center;
+            font-weight: 700; 
+            color: var(--medium-text);
+            font-size: 0.875rem; 
+            text-transform: uppercase;
+        }
+        .lider-letter {
+            background-color: var(--medium-text); 
+            color: #FFFFFF; 
+            font-weight: 900;
+            font-size: 0.75rem; 
+            border-radius: 50%; 
+            width: 1.5rem; 
+            height: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 0.25rem; 
+            flex-shrink: 0;
+        }
+
+        @media (min-width: 768px) {
+            .image-column { width: 50%; height: 100%; }
+            .top-logo-placeholder { margin-bottom: 2.5rem; }
+            .bottom-values-container { margin-top: 2.5rem; }
+            .value-item { font-size: 1rem; }
+            .lider-letter { width: 1.75rem; height: 1.75rem; }
+        }
+
+        /* ----- COLUMNA DERECHA (AZUL KiDOM) ----- */
+        .content-column {
+            width: 100%;
+            background-color: var(--kidom-blue); 
+            padding: 2rem;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; 
+            position: relative;
+            height: 50%; 
+            border-top: 2mm solid var(--kidom-yellow-accent);
+            border-right: 2mm solid var(--kidom-yellow-accent);
+            border-bottom: 2mm solid var(--kidom-yellow-accent);
+            border-left: none;
+        }
+        @media (min-width: 768px) { .content-column { width: 50%; height: 100%; } }
+        
+        .logo-container { width: 100%; height: 50px; position: relative; flex-shrink: 0; margin-bottom: 3.6rem; }
+        .logo-placeholder { position: absolute; top: 0; right: 0; width: 63.25px; height: 63.25px; z-index: 15; }
+        .logo-placeholder img { width: 100%; height: 100%; object-fit: contain; }
+        
+        .main-content-wrapper { display: flex; flex-direction: column; flex-grow: 1; min-height: 0; }
+        .phase-title { color: #FFFFFF; font-size: 1.125rem; font-weight: 700; opacity: 0.8; } 
+        .activity-title { color: #FFFFFF; font-size: 2.75rem; line-height: 1.1; font-weight: 900; margin-bottom: 0.5rem; }
+        .group-name-display { color: var(--kidom-yellow-accent); font-size: 1.75rem; font-weight: 700; line-height: 1; text-transform: uppercase; }
+
+        .title-instruction-spacer { height: 5rem; flex-shrink: 0; }
+        @media (max-width: 768px) { .title-instruction-spacer { height: 2rem; } }
+        
+        .instructions-list { text-align: left; font-size: 1.4rem; color: #F3F4F6; list-style: none; padding-left: 0; overflow-y: auto; flex-grow: 1; }
+        .instructions-list li { margin-bottom: 1rem; }
+        .list-title { display: flex; align-items: center; font-weight: 700; color: #FFFFFF; }
+        .list-icon { margin-right: 0.75rem; font-size: 1.5rem; color: var(--kidom-yellow-accent); flex-shrink: 0; }
+        .list-text { padding-left: 2.5rem; color: #F3F4F6; font-weight: 400; }
+
+        .content-bottom { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; padding-top: 1rem; flex-shrink: 0; }
+        .timer-display { font-family: 'Raleway', sans-serif; font-weight: 800; color: var(--kidom-yellow-accent); font-size: 6rem; line-height: 1; }
+        .nav-button { background-color: #FFFFFF; color: var(--kidom-blue); font-weight: 700; font-size: 1.125rem; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <div id="slides-container">
+        <div class="slide active" data-duration="300">
+            <div class="image-column">
+                <div class="image-column-wrapper">
+                    <div class="top-logo-placeholder"><img src="https://i.imgur.com/wxCyAVL.png"></div>
+                    <img src="https://i.imgur.com/9eFV2ra.png" class="image-guide">
+                    <div class="bottom-values-container">
+                        <div class="value-line">
+                            <span class="value-item"><span class="lider-letter">L</span>iderazgo</span>
+                            <span class="value-item"><span class="lider-letter">I</span>ntegridad</span>
+                            <span class="value-item"><span class="lider-letter">D</span>isciplina</span>
+                            <span class="value-item"><span class="lider-letter">E</span>mpatía</span>
+                            <span class="value-item"><span class="lider-letter">R</span>esponsabilidad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-column">
+                <div class="logo-container"><div class="logo-placeholder"><img src="https://i.imgur.com/R2iF0Rs.png"></div></div>
+                <div class="main-content-wrapper">
+                    <div class="content-header-area">
+                        <h2 class="phase-title">Fase 1 de 6: Saludo y Afirmación</h2>
+                        <h3 class="activity-title">El Círculo de Roles ✨</h3>
+                        <p class="group-name-display">CREADORES (S2)</p>
+                    </div>
+                    <div class="title-instruction-spacer"></div> 
+                    <ul class="instructions-list">
+                        <li><div class="list-title"><span class="list-icon">🦸</span> ¡Equipo de Héroes!:</div><div class="list-text">Cada niño dice su nombre y qué rol de héroe tendrá.</div></li>
+                        <li><div class="list-title"><span class="list-icon">🗣️</span> Grito de Poder:</div><div class="list-text">¡Anclamos la energía con el grito KiDOM!</div></li>
+                    </ul>
+                </div>
+                <div class="content-bottom"><div class="timer-display">05:00</div><button class="nav-button" onclick="navigate(1)">Siguiente</button></div>
+            </div>
+        </div>
+
+        <div class="slide" data-duration="600">
+            <div class="image-column">
+                <div class="image-column-wrapper">
+                    <div class="top-logo-placeholder"><img src="https://i.imgur.com/wxCyAVL.png"></div>
+                    <img src="https://i.imgur.com/wka8tir.png" class="image-guide">
+                    <div class="bottom-values-container">
+                        <div class="value-line">
+                            <span class="value-item"><span class="lider-letter">L</span>iderazgo</span><span class="value-item"><span class="lider-letter">I</span>ntegridad</span><span class="value-item"><span class="lider-letter">D</span>isciplina</span><span class="value-item"><span class="lider-letter">E</span>mpatía</span><span class="value-item"><span class="lider-letter">R</span>esponsabilidad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-column">
+                <div class="logo-container"><div class="logo-placeholder"><img src="https://i.imgur.com/R2iF0Rs.png"></div></div>
+                <div class="main-content-wrapper">
+                    <div class="content-header-area">
+                        <h2 class="phase-title">Fase 2 de 6: Fundamentos</h2>
+                        <h3 class="activity-title">El Volcán del Autocontrol 🌋</h3>
+                        <p class="group-name-display">CREADORES (S2)</p>
+                    </div>
+                    <div class="title-instruction-spacer"></div> 
+                    <ul class="instructions-list">
+                        <li><div class="list-title"><span class="list-icon">⛱️</span> Paracaídas:</div><div class="list-text">Sujetamos y movemos el paracaídas en equipo.</div></li>
+                        <li><div class="list-title"><span class="list-icon">🔥</span> ¡ERUPCIÓN!/¡TEMBLOR!:</div><div class="list-text">Controlamos la intensidad del movimiento según el comando.</div></li>
+                    </ul>
+                </div>
+                <div class="content-bottom"><div class="timer-display">10:00</div><div class="navigation-buttons"><button class="nav-button" onclick="navigate(-1)">Ant</button><button class="nav-button" onclick="navigate(1)">Sig</button></div></div>
+            </div>
+        </div>
+
+        <div class="slide" data-duration="900">
+            <div class="image-column">
+                <div class="image-column-wrapper">
+                    <div class="top-logo-placeholder"><img src="https://i.imgur.com/wxCyAVL.png"></div>
+                    <img src="https://i.imgur.com/JsybfBO.png" class="image-guide">
+                    <div class="bottom-values-container">
+                        <div class="value-line">
+                            <span class="value-item"><span class="lider-letter">L</span>iderazgo</span><span class="value-item"><span class="lider-letter">I</span>ntegridad</span><span class="value-item"><span class="lider-letter">D</span>isciplina</span><span class="value-item"><span class="lider-letter">E</span>mpatía</span><span class="value-item"><span class="lider-letter">R</span>esponsabilidad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-column">
+                <div class="logo-container"><div class="logo-placeholder"><img src="https://i.imgur.com/R2iF0Rs.png"></div></div>
+                <div class="main-content-wrapper">
+                    <div class="content-header-area">
+                        <h2 class="phase-title">Fase 3 de 6: Hito del Mes</h2>
+                        <h3 class="activity-title">El Puente de Héroes 🎯</h3>
+                        <p class="group-name-display">CREADORES (S2)</p>
+                    </div>
+                    <div class="title-instruction-spacer"></div> 
+                    <ul class="instructions-list">
+                        <li><div class="list-title"><span class="list-icon">🏆</span> HITO: Roles:</div><div class="list-text">Construimos puentes con ingenieros y constructores.</div></li>
+                        <li><div class="list-title"><span class="list-icon">🚧</span> Grit:</div><div class="list-text">Si fallas, di: "¡No puedo... TODAVÍA!" y sigue.</div></li>
+                    </ul>
+                </div>
+                <div class="content-bottom"><div class="timer-display">15:00</div><div class="navigation-buttons"><button class="nav-button" onclick="navigate(-1)">Ant</button><button class="nav-button" onclick="navigate(1)">Sig</button></div></div>
+            </div>
+        </div>
+
+        <div class="slide" data-duration="900">
+            <div class="image-column">
+                <div class="image-column-wrapper">
+                    <div class="top-logo-placeholder"><img src="https://i.imgur.com/wxCyAVL.png"></div>
+                    <img src="https://i.imgur.com/Z9dSl8v.png" class="image-guide">
+                    <div class="bottom-values-container">
+                        <div class="value-line">
+                            <span class="value-item"><span class="lider-letter">L</span>iderazgo</span><span class="value-item"><span class="lider-letter">I</span>ntegridad</span><span class="value-item"><span class="lider-letter">D</span>isciplina</span><span class="value-item"><span class="lider-letter">E</span>mpatía</span><span class="value-item"><span class="lider-letter">R</span>esponsabilidad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-column">
+                <div class="logo-container"><div class="logo-placeholder"><img src="https://i.imgur.com/R2iF0Rs.png"></div></div>
+                <div class="main-content-wrapper">
+                    <div class="content-header-area">
+                        <h2 class="phase-title">Fase 4 de 6: Mover y Aprender</h2>
+                        <h3 class="activity-title">Suma y Corre 🧠</h3>
+                        <p class="group-name-display">CREADORES (S2)</p>
+                    </div>
+                    <div class="title-instruction-spacer"></div> 
+                    <ul class="instructions-list">
+                        <li><div class="list-title"><span class="list-icon">🏃</span> Secuencia:</div><div class="list-text">Memoriza y ejecuta movimientos en el orden correcto.</div></li>
+                    </ul>
+                </div>
+                <div class="content-bottom"><div class="timer-display">15:00</div><div class="navigation-buttons"><button class="nav-button" onclick="navigate(-1)">Ant</button><button class="nav-button" onclick="navigate(1)">Sig</button></div></div>
+            </div>
+        </div>
+
+        <div class="slide" data-duration="420">
+            <div class="image-column">
+                <div class="image-column-wrapper">
+                    <div class="top-logo-placeholder"><img src="https://i.imgur.com/wxCyAVL.png"></div>
+                    <img src="https://i.imgur.com/XfOaGOj.png" class="image-guide">
+                    <div class="bottom-values-container">
+                        <div class="value-line">
+                            <span class="value-item"><span class="lider-letter">L</span>iderazgo</span><span class="value-item"><span class="lider-letter">I</span>ntegridad</span><span class="value-item"><span class="lider-letter">D</span>isciplina</span><span class="value-item"><span class="lider-letter">E</span>mpatía</span><span class="value-item"><span class="lider-letter">R</span>esponsabilidad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-column">
+                <div class="logo-container"><div class="logo-placeholder"><img src="https://i.imgur.com/R2iF0Rs.png"></div></div>
+                <div class="main-content-wrapper">
+                    <div class="content-header-area">
+                        <h2 class="phase-title">Fase 5 de 6: Reto Equipo</h2>
+                        <h3 class="activity-title">Carrera de Orugas 🐛</h3>
+                        <p class="group-name-display">CREADORES (S2)</p>
+                    </div>
+                    <div class="title-instruction-spacer"></div> 
+                    <ul class="instructions-list">
+                        <li><div class="list-title"><span class="list-icon">🤝</span> Coordinación:</div><div class="list-text">Muévanse en oruga sin romper la cadena.</div></li>
+                    </ul>
+                </div>
+                <div class="content-bottom"><div class="timer-display">07:00</div><div class="navigation-buttons"><button class="nav-button" onclick="navigate(-1)">Ant</button><button class="nav-button" onclick="navigate(1)">Sig</button></div></div>
+            </div>
+        </div>
+
+        <div class="slide" data-duration="300">
+            <div class="image-column">
+                <div class="image-column-wrapper">
+                    <div class="top-logo-placeholder"><img src="https://i.imgur.com/wxCyAVL.png"></div>
+                    <img src="https://i.imgur.com/NGgsvl8.png" class="image-guide">
+                    <div class="bottom-values-container">
+                        <div class="value-line">
+                            <span class="value-item"><span class="lider-letter">L</span>iderazgo</span><span class="value-item"><span class="lider-letter">I</span>ntegridad</span><span class="value-item"><span class="lider-letter">D</span>isciplina</span><span class="value-item"><span class="lider-letter">E</span>mpatía</span><span class="value-item"><span class="lider-letter">R</span>esponsabilidad</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-column">
+                <div class="logo-container"><div class="logo-placeholder"><img src="https://i.imgur.com/R2iF0Rs.png"></div></div>
+                <div class="main-content-wrapper">
+                    <div class="content-header-area">
+                        <h2 class="phase-title">Fase 6 de 6: Cierre</h2>
+                        <h3 class="activity-title">Escuadrón de Limpieza 🧹</h3>
+                        <p class="group-name-display">CREADORES (S2)</p>
+                    </div>
+                    <div class="title-instruction-spacer"></div> 
+                    <ul class="instructions-list">
+                        <li><div class="list-title"><span class="list-icon">🪙</span> Kidom Coins:</div><div class="list-text">¡Disciplina premiada! Limpiamos y recibimos KC.</div></li>
+                    </ul>
+                </div>
+                <div class="content-bottom"><div class="timer-display">05:00</div><button class="nav-button" onclick="navigate(-5)">Reiniciar</button></div>
+            </div>
+        </div>
+    </div> 
+    
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide'); 
+        let timerInterval = null;
+
+        function formatTime(seconds) {
+            const minutes = Math.floor(seconds / 60);
+            const remainingSeconds = seconds % 60;
+            return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+
+        function controlTimer(slideElement) {
+            clearInterval(timerInterval); 
+            const duration = parseInt(slideElement.dataset.duration, 10);
+            const timerDisplay = slideElement.querySelector('.timer-display');
+            
+            if (!isNaN(duration) && timerDisplay) {
+                let timeLeft = duration;
+                timerDisplay.textContent = formatTime(timeLeft);
+                
+                timerInterval = setInterval(() => {
+                    timeLeft--;
+                    if (timeLeft >= 0) {
+                        timerDisplay.textContent = formatTime(timeLeft);
+                    } else {
+                        clearInterval(timerInterval);
+                        navigate(1); 
+                    }
+                }, 1000);
+            }
+        }
+
+        function showSlide(index) {
+            slides.forEach(slide => { slide.classList.remove('active'); slide.style.display = 'none'; });
+            if (slides[index]) {
+                slides[index].classList.add('active');
+                slides[index].style.display = 'flex';
+                currentSlide = index;
+                controlTimer(slides[currentSlide]); 
+            }
+        }
+
+        function navigate(direction) {
+            const nextSlideIndex = currentSlide + direction;
+            if (nextSlideIndex >= 0 && nextSlideIndex < slides.length) { showSlide(nextSlideIndex); }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "ArrowLeft") navigate(-1);
+            else if (e.key === "ArrowRight") navigate(1);
+        });
+        
+        document.addEventListener('DOMContentLoaded', () => showSlide(0));
+    </script>
+</body>
+</html>
