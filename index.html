@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KiDOM Sesión: DÍA 1 - Creadores (S7) - El Cerebro es un Músculo</title>
+    <title>KiDOM Sesión: S13 - D2 - TV MODE FULL</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Raleway:wght@800&display=swap" rel="stylesheet">
     
     <style>
@@ -13,87 +13,72 @@
             --medium-text: #4B5563; 
         }
 
-        /* --- SOPORTE TV: Zoom para pantallas grandes --- */
-        @media screen and (min-width: 1500px) {
-            body { zoom: 1.2; } 
-        }
-
         html, body {
             height: 100%; width: 100%; margin: 0; padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
+            font-family: 'Montserrat', sans-serif; overflow: hidden;
             background-color: var(--medium-text);
         }
 
         #slides-container { width: 100%; height: 100%; display: flex; position: relative; }
         
         .slide {
-            flex-shrink: 0; width: 100%; height: 100%;
-            display: flex; flex-direction: column; 
-            position: relative; overflow: hidden; display: none;
+            flex-shrink: 0; width: 100%; height: 100%; display: flex;
+            flex-direction: column; position: relative; overflow: hidden; display: none;
         }
         @media (min-width: 768px) { .slide { flex-direction: row; } }
         .slide.active { display: flex; }
 
-        /* ----- COLUMNA IZQUIERDA (BLANCA) ----- */
+        /* ----- COLUMNA IZQUIERDA (BLANCA CON ZOOM TV) ----- */
         .image-column {
-            width: 100%; background-color: #FFFFFF; padding: 2rem; box-sizing: border-box; 
-            display: flex; flex-direction: column; justify-content: space-between; 
-            align-items: center; height: 50%; border: 2mm solid var(--kidom-blue); border-right: none;
+            width: 100%; background-color: #FFFFFF; padding: 2rem; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; align-items: center; height: 50%; border: 2mm solid var(--kidom-blue); border-right: none;
+            overflow: hidden;
         }
-        @media (min-width: 768px) { .image-column { width: 50%; height: 100%; } }
-
-        .image-column-wrapper {
-            display: flex; flex-direction: column; align-items: center; justify-content: center; 
-            width: 100%; height: 100%; position: relative;
+        @media (min-width: 768px) { 
+            .image-column { width: 50%; height: 100%; } 
+            .image-column-wrapper {
+                transform: scale(1.15); /* Zoom aplicado solo aquí */
+                transform-origin: center;
+                display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%;
+            }
         }
 
         .top-logo-placeholder { max-width: 300px; height: 80px; flex-shrink: 0; margin-bottom: 1rem; }
         .top-logo-placeholder img { width: 100%; height: 100%; object-fit: contain; }
         
         .image-guide {
-            width: 100%; height: 100%; max-width: 90%; max-height: 48vh; 
-            display: flex; align-items: center; justify-content: center; flex-grow: 1; 
-            background-color: #FFFFFF; overflow: hidden;
+            width: 100%; height: 100%; max-width: 90%; max-height: 48vh; display: flex; align-items: center; justify-content: center; flex-grow: 1;
         }
         .image-guide img { width: 100%; height: 100%; object-fit: contain; }
 
         .bottom-values-container { position: relative; width: 90%; flex-shrink: 0; margin-top: 1rem; padding-bottom: 0.5rem; }
         .value-line { display: flex; justify-content: center; flex-wrap: nowrap; gap: 0.75rem; }
         .value-item { font-weight: 700; color: var(--medium-text); font-size: 0.84rem; text-transform: uppercase;}
-        .lider-letter { background-color: var(--medium-text); color: #FFFFFF; font-weight: 900; font-size: 0.875rem; border-radius: 50%; width: 1.75rem; height: 1.75rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.25rem; flex-shrink: 0;}
+        .lider-letter { background-color: var(--medium-text); color: #FFFFFF; font-weight: 900; font-size: 0.875rem; border-radius: 50%; width: 1.75rem; height: 1.75rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.25rem; }
 
-        /* ----- COLUMNA DERECHA (AZUL KiDOM) ----- */
+        /* ----- COLUMNA DERECHA (AZUL SIN ZOOM) ----- */
         .content-column {
-            width: 100%; background-color: var(--kidom-blue); color: #FFFFFF; padding: 2rem; 
-            box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; 
-            height: 50%; border-top: 2mm solid var(--kidom-yellow-accent); 
-            border-right: 2mm solid var(--kidom-yellow-accent); 
-            border-bottom: 2mm solid var(--kidom-yellow-accent); border-left: none;
+            width: 100%; background-color: var(--kidom-blue); color: #FFFFFF; padding: 2.5rem; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start; height: 50%; border-top: 2mm solid var(--kidom-yellow-accent); border-right: 2mm solid var(--kidom-yellow-accent); border-bottom: 2mm solid var(--kidom-yellow-accent); border-left: none; position: relative;
         }
         @media (min-width: 768px) { .content-column { width: 50%; height: 100%; } }
 
-        .logo-container { flex-shrink: 0; margin-bottom: 0.5rem; position: relative; height: auto; min-height: 50px; } 
-        .logo-placeholder { position: absolute; top: -3.25rem; right: -3.75rem; width: 142px; height: 142px; z-index: 15; padding-top: 1rem; padding-right: 1rem; box-sizing: border-box; cursor: pointer;}
-        .logo-placeholder img { width: 100%; height: 100%; object-fit: contain;}
+        .logo-placeholder { position: absolute; top: 1rem; right: 1rem; width: 120px; z-index: 100; cursor: pointer; }
+        .logo-placeholder img { width: 100%; height: auto; }
         
-        .main-content-wrapper { display: flex; flex-direction: column; flex-grow: 1; min-height: 0; }
-        .content-header-area { padding-top: 2.5rem; flex-shrink: 0; }
-        .phase-title { color: #FFFFFF; font-size: 1.125rem; font-weight: 700; opacity: 0.8; margin-bottom: 0; }
-        .activity-title { color: #FFFFFF; font-size: 1.925rem; line-height: 1.1; font-weight: 900; margin: 0; }
-        .group-name-display { color: var(--kidom-yellow-accent); font-size: 1.75rem; font-weight: 700; text-transform: uppercase; margin-bottom: 4rem; } 
+        .main-content-wrapper { display: flex; flex-direction: column; flex-grow: 1; min-height: 0; padding-right: 1rem; }
+        .phase-title { color: #FFFFFF; font-size: 1.1rem; font-weight: 700; opacity: 0.85; margin-bottom: 0.25rem; }
+        .activity-title { color: #FFFFFF; font-size: 1.85rem; line-height: 1.1; font-weight: 900; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .group-name-display { color: var(--kidom-yellow-accent); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; } 
         
-        .instructions-list { text-align: left; font-size: 1.4rem; color: #F3F4F6; list-style: none; padding-left: 0; overflow-y: auto; flex-grow: 1; }
-        .instructions-list li { margin-bottom: 1rem; }
-        .list-title { display: flex; align-items: center; font-weight: 700; color: #FFFFFF; }
-        .list-icon { margin-right: 0.75rem; font-size: 1.5rem; color: var(--kidom-yellow-accent); flex-shrink: 0; }
-        .list-text { padding-left: 2.5rem; color: #F3F4F6; font-weight: 400; }
+        .instructions-list { font-size: 1.15rem; color: #F3F4F6; list-style: none; padding-left: 0; overflow-y: auto; flex-grow: 1; }
+        .instructions-list li { margin-bottom: 1.25rem; line-height: 1.4; }
+        .list-title { display: flex; align-items: center; font-weight: 700; color: #FFFFFF; text-transform: uppercase; font-size: 1rem; margin-bottom: 0.25rem; }
+        .list-icon { margin-right: 0.5rem; font-size: 1.2rem; color: var(--kidom-yellow-accent); }
+        .list-text { padding-left: 1.7rem; color: #E5E7EB; font-weight: 400; }
 
-        .content-bottom { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; padding-top: 1rem; flex-shrink: 0; }
-        .timer-display { font-family: 'Raleway', sans-serif; font-weight: 800; color: var(--kidom-yellow-accent); font-size: 6rem; line-height: 1; }
-        .navigation-buttons { display: flex; gap: 0.5rem; }
-        .nav-button { background-color: #FFFFFF; color: var(--kidom-blue); font-weight: 700; font-size: 1.125rem; padding: 0.75rem 1.5rem; border-radius: 0.5rem; cursor: pointer; border: none; }
-        .nav-button:disabled { opacity: 0.5; cursor: not-allowed; }
+        .content-bottom { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; margin-top: 1rem; }
+        /* CRONÓMETRO GIGANTE PARA TV */
+        .timer-display { font-family: 'Raleway', sans-serif; font-weight: 800; color: var(--kidom-yellow-accent); font-size: 6.5rem; line-height: 1; }
+        .nav-button { background-color: #FFFFFF; color: var(--kidom-blue); font-weight: 700; padding: 0.8rem 1.8rem; border-radius: 0.5rem; cursor: pointer; border: none; font-size: 1rem; }
     </style>
 </head>
 <body>
@@ -103,28 +88,37 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/Rp6t44b.jpeg"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/RAziZbB.png" alt="Doble Factor"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
-                            <span class="value-item"><span class="lider-letter">L</span>Liderazgo</span><span class="value-item"><span class="lider-letter">I</span>Integridad</span><span class="value-item"><span class="lider-letter">D</span>Disciplina</span><span class="value-item"><span class="lider-letter">E</span>Empatía</span><span class="value-item"><span class="lider-letter">R</span>Responsabilidad</span>
+                            <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
+                            <span class="value-item"><span class="lider-letter">I</span>NTEGRIDAD</span>
+                            <span class="value-item"><span class="lider-letter">D</span>ISCIPLINA</span>
+                            <span class="value-item"><span class="lider-letter">E</span>MPATÍA</span>
+                            <span class="value-item"><span class="lider-letter">R</span>ESPONSABILIDAD</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content-column">
-                <div class="logo-container"><div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div></div>
+                <div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div>
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
-                        <h2 class="phase-title">Fase 1 de 6: Saludo y Afirmación</h2>
-                        <h3 class="activity-title">El Comando de los Dígitos (Foco Auditivo)</h3>
-                        <p class="group-name-display">CREADORES - SEMANA 7</p>
+                        <p class="phase-title">Fase 1: Saludo y Afirmación</p>
+                        <h3 class="activity-title">ESCANEO DE DOBLE FACTOR</h3>
+                        <p class="group-name-display">CREADORES S13 - D2</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span> Guion:</div><div class="list-text">Grito un número (1 a 4). Deben hacer EXACTAMENTE ese número de palmadas. ¡Máximo Foco!</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span> PNL:</div><div class="list-text">¡Ejercitando el músculo de tu memoria! ¡Bravo por esa concentración!</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Bienvenidos, procesadores! Para activar el sistema, busquen una pareja. Deben chocar su pie derecho con el de ellos, mantener contacto visual y contar del 1 al 5 en voz alta con energía. ¡Solo así se desbloquea el sistema!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Los niños se mueven por el espacio. Al sonido del silbato, deben encontrar un compañero y realizar la secuencia: contacto de pies + contacto visual + conteo rítmico.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Sincronizo mi cuerpo y mi mente. Estoy presente y listo para el procesamiento dual."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Coordinar la acción física del choque de pies con el conteo verbal sin pausas.</div></li>
                     </ul>
                 </div>
-                <div class="content-bottom"><div class="timer-display">05:00</div><div class="navigation-buttons"><button class="nav-button nextBtn" onclick="navigate(1)">Siguiente</button></div></div>
+                <div class="content-bottom">
+                    <div class="timer-display">05:00</div>
+                    <button class="nav-button" onclick="navigate(1)">SIGUIENTE</button>
+                </div>
             </div>
         </div>
 
@@ -132,28 +126,37 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/LSoHk8j.png"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/5GvZdqo.png" alt="Dribbling Datos"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
-                            <span class="value-item"><span class="lider-letter">L</span>Liderazgo</span><span class="value-item"><span class="lider-letter">I</span>Integridad</span><span class="value-item"><span class="lider-letter">D</span>Disciplina</span><span class="value-item"><span class="lider-letter">E</span>Empatía</span><span class="value-item"><span class="lider-letter">R</span>Responsabilidad</span>
+                            <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
+                            <span class="value-item"><span class="lider-letter">I</span>NTEGRIDAD</span>
+                            <span class="value-item"><span class="lider-letter">D</span>ISCIPLINA</span>
+                            <span class="value-item"><span class="lider-letter">E</span>MPATÍA</span>
+                            <span class="value-item"><span class="lider-letter">R</span>ESPONSABILIDAD</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content-column">
-                <div class="logo-container"><div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div></div>
+                <div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div>
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
-                        <h2 class="phase-title">Fase 2 de 6: Fundamentos</h2>
-                        <h3 class="activity-title">Patrones de Salto Secuencial</h3>
-                        <p class="group-name-display">CREADORES - SEMANA 7</p>
+                        <p class="phase-title">Fase 2: Fundamentos</p>
+                        <h3 class="activity-title">DRIBBLING DE DATOS MIXTOS</h3>
+                        <p class="group-name-display">CREADORES S13 - D2</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span> Guion:</div><div class="list-text">Secuencia: **2 pies adentro, 1 afuera, 3 saltos**. ¡Guárdala en tu músculo cerebral!</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span> KC:</div><div class="list-text">1 KC: Lograr la secuencia completa 3 veces seguidas sin ayuda.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Lleven el balón con los pies como si fuera un flujo de datos constante, mientras equilibran un platillo en su palma. ¡Crucen el gimnasio sin que ningún dato caiga al suelo!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Desplazamiento en zig-zag. El pie controla el balón (Atención Inferior) y la mano sostiene el platillo a la altura del hombro (Atención Superior).</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mi cerebro gestiona múltiples tareas con calma y precisión. Soy un procesador de alto rendimiento."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Completar el recorrido de 10 metros sin que el platillo caiga ni el balón se aleje más de 1 metro.</div></li>
                     </ul>
                 </div>
-                <div class="content-bottom"><div class="timer-display">10:00</div><div class="navigation-buttons"><button class="nav-button prevBtn" onclick="navigate(-1)">Ant</button><button class="nav-button nextBtn" onclick="navigate(1)">Sig</button></div></div>
+                <div class="content-bottom">
+                    <div class="timer-display">10:00</div>
+                    <button class="nav-button" onclick="navigate(1)">SIGUIENTE</button>
+                </div>
             </div>
         </div>
 
@@ -161,28 +164,37 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/HvCKCK9.png"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/TdNHsTJ.png" alt="Escaladores Carga"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
-                            <span class="value-item"><span class="lider-letter">L</span>Liderazgo</span><span class="value-item"><span class="lider-letter">I</span>Integridad</span><span class="value-item"><span class="lider-letter">D</span>Disciplina</span><span class="value-item"><span class="lider-letter">E</span>Empatía</span><span class="value-item"><span class="lider-letter">R</span>Responsabilidad</span>
+                            <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
+                            <span class="value-item"><span class="lider-letter">I</span>NTEGRIDAD</span>
+                            <span class="value-item"><span class="lider-letter">D</span>ISCIPLINA</span>
+                            <span class="value-item"><span class="lider-letter">E</span>MPATÍA</span>
+                            <span class="value-item"><span class="lider-letter">R</span>ESPONSABILIDAD</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content-column">
-                <div class="logo-container"><div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div></div>
+                <div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div>
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
-                        <h2 class="phase-title">Fase 3 de 6: Hito del Mes</h2>
-                        <h3 class="activity-title">Código Binario del Movimiento</h3>
-                        <p class="group-name-display">CREADORES - SEMANA 7</p>
+                        <p class="phase-title">Fase 3: El Gran Reto</p>
+                        <h3 class="activity-title">ESCALADORES CON CARGA DUAL</h3>
+                        <p class="group-name-display">CREADORES S13 - D2</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span> Guion:</div><div class="list-text">Rojo=Salto; Azul=Palmada. ¡Ejecuten la secuencia de memoria!</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span> KC:</div><div class="list-text">5 KC: Lograr secuencia de 5 pasos sin errores.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡A las espalderas! Deben trepar llevando un aro en el brazo y un platillo en la mano. Cuando grite un color, tóquenlo con su platillo y sigan subiendo. ¡Procesamiento físico y mental al límite!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Ascenso lateral en espalderas o muros. Al comando visual o auditivo, el niño debe soltar una mano (equilibrio dinámico) para marcar el objetivo indicado.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Supero obstáculos mientras proceso información en tiempo real. Mi arquitectura es fuerte."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(5 KC)** Lograr marcar 3 colores distintos durante el ascenso sin soltarse ni dejar caer el material.</div></li>
                     </ul>
                 </div>
-                <div class="content-bottom"><div class="timer-display">15:00</div><div class="navigation-buttons"><button class="nav-button prevBtn" onclick="navigate(-1)">Ant</button><button class="nav-button nextBtn" onclick="navigate(1)">Sig</button></div></div>
+                <div class="content-bottom">
+                    <div class="timer-display">15:00</div>
+                    <button class="nav-button" onclick="navigate(1)">SIGUIENTE</button>
+                </div>
             </div>
         </div>
 
@@ -190,28 +202,37 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/Cba2o9i.png"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/NuQZAj0.png" alt="Zapatos Lógica"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
-                            <span class="value-item"><span class="lider-letter">L</span>Liderazgo</span><span class="value-item"><span class="lider-letter">I</span>Integridad</span><span class="value-item"><span class="lider-letter">D</span>Disciplina</span><span class="value-item"><span class="lider-letter">E</span>Empatía</span><span class="value-item"><span class="lider-letter">R</span>Responsabilidad</span>
+                            <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
+                            <span class="value-item"><span class="lider-letter">I</span>NTEGRIDAD</span>
+                            <span class="value-item"><span class="lider-letter">D</span>ISCIPLINA</span>
+                            <span class="value-item"><span class="lider-letter">E</span>MPATÍA</span>
+                            <span class="value-item"><span class="lider-letter">R</span>ESPONSABILIDAD</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content-column">
-                <div class="logo-container"><div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div></div>
+                <div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div>
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
-                        <h2 class="phase-title">Fase 4 de 6: Mover y Aprender</h2>
-                        <h3 class="activity-title">Estatua Cruzada Inestable</h3>
-                        <p class="group-name-display">CREADORES - SEMANA 7</p>
+                        <p class="phase-title">Fase 4: Mover y Aprender</p>
+                        <h3 class="activity-title">ZAPATOS EN RED LÓGICA</h3>
+                        <p class="group-name-display">CREADORES S13 - D2</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span> Guion:</div><div class="list-text">Cojín + pie al aire. Secuencia de cruces. ¡Poder de Foco!</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span> PNL:</div><div class="list-text">¡Miren ese músculo cerebral trabajando! Ordenándole al cuerpo estabilidad.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Sus zapatos forman un laberinto en el suelo. Para recuperar el suyo, solo pueden saltar sobre zapatos que NO sean de su color. ¡Filtren los datos basura para llegar a la meta!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Los niños deben planificar su ruta visualmente. Deben desplazarse mediante saltos de precisión evitando su propio color hasta rescatar su calzado.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Discrimino la información irrelevante y me enfoco solo en lo que me acerca a mi meta."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(2 KC)** Completar la ruta sin errores de discriminación de color en menos de 20 segundos.</div></li>
                     </ul>
                 </div>
-                <div class="content-bottom"><div class="timer-display">15:00</div><div class="navigation-buttons"><button class="nav-button prevBtn" onclick="navigate(-1)">Ant</button><button class="nav-button nextBtn" onclick="navigate(1)">Sig</button></div></div>
+                <div class="content-bottom">
+                    <div class="timer-display">15:00</div>
+                    <button class="nav-button" onclick="navigate(1)">SIGUIENTE</button>
+                </div>
             </div>
         </div>
 
@@ -219,28 +240,37 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/ULDD1Vv.png"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/EvGOT4S.png" alt="Orquesta Procesadores"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
-                            <span class="value-item"><span class="lider-letter">L</span>Liderazgo</span><span class="value-item"><span class="lider-letter">I</span>Integridad</span><span class="value-item"><span class="lider-letter">D</span>Disciplina</span><span class="value-item"><span class="lider-letter">E</span>Empatía</span><span class="value-item"><span class="lider-letter">R</span>Responsabilidad</span>
+                            <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
+                            <span class="value-item"><span class="lider-letter">I</span>NTEGRIDAD</span>
+                            <span class="value-item"><span class="lider-letter">D</span>ISCIPLINA</span>
+                            <span class="value-item"><span class="lider-letter">E</span>MPATÍA</span>
+                            <span class="value-item"><span class="lider-letter">R</span>ESPONSABILIDAD</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content-column">
-                <div class="logo-container"><div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div></div>
+                <div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div>
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
-                        <h2 class="phase-title">Fase 5 de 6: Reto en Equipo</h2>
-                        <h3 class="activity-title">Dibujo Motor Colectivo</h3>
-                        <p class="group-name-display">CREADORES - SEMANA 7</p>
+                        <p class="phase-title">Fase 5: Reto en Equipo</p>
+                        <h3 class="activity-title">LA ORQUESTA DE PROCESADORES</h3>
+                        <p class="group-name-display">CREADORES S13 - D2</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span> Guion:</div><div class="list-text">Tómense de las manos. Muévanse como una sola unidad según dicte.</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span> KC:</div><div class="list-text">2 KC: Completar secuencia de 4 pasos sin romper formación.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Cada equipo crea un ritmo distinto usando pies y manos. Cuando los señale, deben subir el volumen de su procesamiento. ¡Sincronía total ante la interferencia externa!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Trabajo de atención selectiva auditiva. Los equipos mantienen patrones rítmicos distintos de forma simultánea, incrementando la intensidad bajo mando del Coach.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mi ritmo individual contribuye a la sinfonía del sistema. Soy parte de un todo organizado."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(3 KC)** Mantener el ritmo grupal durante 30 segundos sin desincronizarse por el sonido de otros.</div></li>
                     </ul>
                 </div>
-                <div class="content-bottom"><div class="timer-display">07:00</div><div class="navigation-buttons"><button class="nav-button prevBtn" onclick="navigate(-1)">Ant</button><button class="nav-button nextBtn" onclick="navigate(1)">Sig</button></div></div>
+                <div class="content-bottom">
+                    <div class="timer-display">07:00</div>
+                    <button class="nav-button" onclick="navigate(1)">SIGUIENTE</button>
+                </div>
             </div>
         </div>
 
@@ -248,28 +278,37 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/HUJsXDu.jpeg"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/UlMHqw2.png" alt="Desconexión"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
-                            <span class="value-item"><span class="lider-letter">L</span>Liderazgo</span><span class="value-item"><span class="lider-letter">I</span>Integridad</span><span class="value-item"><span class="lider-letter">D</span>Disciplina</span><span class="value-item"><span class="lider-letter">E</span>Empatía</span><span class="value-item"><span class="lider-letter">R</span>Responsabilidad</span>
+                            <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
+                            <span class="value-item"><span class="lider-letter">I</span>NTEGRIDAD</span>
+                            <span class="value-item"><span class="lider-letter">D</span>ISCIPLINA</span>
+                            <span class="value-item"><span class="lider-letter">E</span>MPATÍA</span>
+                            <span class="value-item"><span class="lider-letter">R</span>ESPONSABILIDAD</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="content-column">
-                <div class="logo-container"><div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div></div>
+                <div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div>
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
-                        <h2 class="phase-title">Fase 6 de 6: Ceremonia de Cierre</h2>
-                        <h3 class="activity-title">Postura del Héroe</h3>
-                        <p class="group-name-display">CREADORES - SEMANA 7</p>
+                        <p class="phase-title">Fase 6: Cierre</p>
+                        <h3 class="activity-title">DESCONEXIÓN SELECTIVA</h3>
+                        <p class="group-name-display">CREADORES S13 - D2</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span> Guion:</div><div class="list-text">Postura del Árbol enfocada. Ojos cerrados 30s. Disciplina y calma.</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span> KC:</div><div class="list-text">1 KC: Mantener postura y silencio total 30s.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Cierren los ojos. Vamos a apagar los núcleos. Relajen los pies... apagados. Relajen las manos... apagadas. Respiren hondo mientras el sistema entra en modo ahorro de energía."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Técnica de relajación muscular progresiva. Los niños pasan de un estado de alerta máxima a uno de calma consciente mediante respiración diafragmática.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Sé cuándo acelerar y cuándo pausar. Mi descanso es parte de mi alto rendimiento."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Permanecer en quietud absoluta durante los últimos 60 segundos de la sesión.</div></li>
                     </ul>
                 </div>
-                <div class="content-bottom"><div class="timer-display">05:00</div><div class="navigation-buttons"><button class="nav-button prevBtn" onclick="navigate(-1)">Ant</button><button class="nav-button" onclick="navigate(-5)">Reset</button></div></div>
+                <div class="content-bottom">
+                    <div class="timer-display">05:00</div>
+                    <button class="nav-button" disabled>FINALIZAR</button>
+                </div>
             </div>
         </div>
     </div>
@@ -280,46 +319,41 @@
         let timerInterval = null;
 
         function formatTime(s) {
-            return `${Math.floor(s/60).toString().padStart(2,'0')}:${(s%60).toString().padStart(2,'0')}`;
+            const min = Math.floor(s / 60);
+            const sec = s % 60;
+            return `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
         }
 
-        function controlTimer(slideElement) {
+        function controlTimer(slide) {
             clearInterval(timerInterval);
-            const duration = parseInt(slideElement.dataset.duration, 10);
-            const timerDisplay = slideElement.querySelector('.timer-display');
-            if (timerDisplay && !isNaN(duration)) {
-                let timeLeft = duration;
-                timerDisplay.textContent = formatTime(timeLeft);
-                timerInterval = setInterval(() => {
-                    if (--timeLeft >= 0) timerDisplay.textContent = formatTime(timeLeft);
-                    else { clearInterval(timerInterval); navigate(1); }
-                }, 1000);
-            }
-        }
-
-        function showSlide(index) {
-            slides.forEach(s => { s.classList.remove('active'); s.style.display = 'none'; });
-            if (slides[index]) {
-                slides[index].classList.add('active');
-                slides[index].style.display = 'flex';
-                currentSlide = index;
-                controlTimer(slides[index]);
-            }
+            let timeLeft = parseInt(slide.dataset.duration);
+            const display = slide.querySelector('.timer-display');
+            display.textContent = formatTime(timeLeft);
+            timerInterval = setInterval(() => {
+                timeLeft--;
+                if (timeLeft >= 0) display.textContent = formatTime(timeLeft);
+                else { clearInterval(timerInterval); if (currentSlide < slides.length - 1) navigate(1); }
+            }, 1000);
         }
 
         function navigate(dir) {
-            let next = currentSlide + dir;
-            if (next >= 0 && next < slides.length) showSlide(next);
+            const next = currentSlide + dir;
+            if (next >= 0 && next < slides.length) {
+                slides[currentSlide].classList.remove('active');
+                slides[currentSlide].style.display = 'none';
+                currentSlide = next;
+                slides[currentSlide].classList.add('active');
+                slides[currentSlide].style.display = 'flex';
+                controlTimer(slides[currentSlide]);
+            }
         }
 
-        function resetTimer() { showSlide(currentSlide); }
-
+        function resetTimer() { controlTimer(slides[currentSlide]); }
+        window.onload = () => controlTimer(slides[0]);
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') navigate(1);
-            if (e.key === 'ArrowLeft') navigate(-1);
+            if (e.key === 'ArrowRight' && currentSlide < slides.length - 1) navigate(1);
+            if (e.key === 'ArrowLeft' && currentSlide > 0) navigate(-1);
         });
-
-        document.addEventListener('DOMContentLoaded', () => showSlide(0));
     </script>
 </body>
 </html>
