@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KiDOM Sesión: S13 - D3 - Overclocking</title>
+    <title>KiDOM Sesión: S13 - D4 - Redundancia</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Raleway:wght@800&display=swap" rel="stylesheet">
     
     <style>
@@ -25,11 +25,10 @@
             flex-shrink: 0; width: 100%; height: 100%; display: flex;
             flex-direction: column; position: relative; overflow: hidden; display: none;
         }
-        /* AJUSTE PARA TV: Mantenemos tu diseño original pero aseguramos la proporción horizontal */
         @media (min-width: 768px) { .slide { flex-direction: row; } }
         .slide.active { display: flex; }
 
-        /* ----- COLUMNA IZQUIERDA ----- */
+        /* COLUMNA IZQUIERDA */
         .image-column {
             width: 100%; background-color: #FFFFFF; padding: 2rem; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; align-items: center; height: 50%; border: 2mm solid var(--kidom-blue); border-right: none;
         }
@@ -52,7 +51,7 @@
         .value-item { font-weight: 700; color: var(--medium-text); font-size: 0.84rem; text-transform: uppercase;}
         .lider-letter { background-color: var(--medium-text); color: #FFFFFF; font-weight: 900; font-size: 0.875rem; border-radius: 50%; width: 1.75rem; height: 1.75rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.25rem; flex-shrink: 0;}
 
-        /* ----- COLUMNA DERECHA ----- */
+        /* COLUMNA DERECHA */
         .content-column {
             width: 100%; background-color: var(--kidom-blue); color: #FFFFFF; padding: 2.5rem; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start; height: 50%; border-top: 2mm solid var(--kidom-yellow-accent); border-right: 2mm solid var(--kidom-yellow-accent); border-bottom: 2mm solid var(--kidom-yellow-accent); border-left: none; position: relative;
         }
@@ -63,27 +62,26 @@
             top: 20px; 
             right: 20px; 
             width: 120px; 
-            height: auto; 
             z-index: 100; 
             cursor: pointer;
         }
         .logo-placeholder img { width: 100%; height: auto; object-fit: contain;}
         
         .main-content-wrapper { display: flex; flex-direction: column; flex-grow: 1; min-height: 0; padding-right: 1.5rem; }
-        .content-header-area { margin-bottom: 1.5rem; }
+        .content-header-area { margin-bottom: 1rem; }
         .phase-title { color: #FFFFFF; font-size: 1.1rem; font-weight: 700; opacity: 0.85; margin-bottom: 0.25rem; }
-        .activity-title { color: #FFFFFF; font-size: 1.85rem; line-height: 1.1; font-weight: 900; text-transform: uppercase; margin-bottom: 0.5rem; }
-        .group-name-display { color: var(--kidom-yellow-accent); font-size: 1.5rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1.5rem; } 
+        .activity-title { color: #FFFFFF; font-size: 2.2rem; line-height: 1.1; font-weight: 900; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .group-name-display { color: var(--kidom-yellow-accent); font-size: 1.6rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; } 
         
-        .instructions-list { font-size: 1.15rem; color: #F3F4F6; list-style: none; padding-left: 0; overflow-y: auto; flex-grow: 1; }
-        .instructions-list li { margin-bottom: 1.25rem; line-height: 1.4; }
+        .instructions-list { font-size: 1.4rem; color: #F3F4F6; list-style: none; padding-left: 0; overflow-y: auto; flex-grow: 1; }
+        .instructions-list li { margin-bottom: 1.5rem; line-height: 1.3; }
         .list-title { display: flex; align-items: center; font-weight: 700; color: #FFFFFF; text-transform: uppercase; font-size: 1rem; margin-bottom: 0.25rem; }
         .list-icon { margin-right: 0.5rem; font-size: 1.2rem; color: var(--kidom-yellow-accent); }
         .list-text { padding-left: 1.7rem; color: #E5E7EB; font-weight: 400; }
 
         .content-bottom { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; margin-top: 1rem; }
-        .timer-display { font-family: 'Raleway', sans-serif; font-weight: 800; color: var(--kidom-yellow-accent); font-size: 5rem; line-height: 1; }
-        .nav-button { background-color: #FFFFFF; color: var(--kidom-blue); font-weight: 700; padding: 0.8rem 1.8rem; border-radius: 0.5rem; cursor: pointer; border: none; font-size: 1rem; }
+        .timer-display { font-family: 'Raleway', sans-serif; font-weight: 800; color: var(--kidom-yellow-accent); font-size: 6rem; line-height: 1; }
+        .nav-button { background-color: #FFFFFF; color: var(--kidom-blue); font-weight: 700; padding: 1rem 2rem; border-radius: 0.5rem; cursor: pointer; border: none; font-size: 1.1rem; }
     </style>
 </head>
 <body>
@@ -93,7 +91,7 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/7OmhLzr.png" alt="Saludo Centella"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/Vdh13TC.png"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
                             <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
@@ -110,14 +108,14 @@
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
                         <p class="phase-title">Fase 1: Saludo y Afirmación</p>
-                        <h3 class="activity-title">EL SALUDO CENTELLA</h3>
-                        <p class="group-name-display">CREADORES S13 - D3</p>
+                        <h3 class="activity-title">CÓDIGO DE ACCESO GRUPAL</h3>
+                        <p class="group-name-display">CREADORES S13 - D4</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Procesadores en movimiento! Al grito de ¡CENTELLA!, busquen un compañero y completen el saludo de 4 toques veloz. Al grito de ¡CARGA!, digan su afirmación con toda la potencia del sistema."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Los niños caminan por el espacio. El Coach alterna comandos. Deben reaccionar instantáneamente al saludo (palma-palma-codo-codo) y retomar el movimiento.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mi respuesta es inmediata y precisa. Estoy conectado al 100% con mi equipo."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Completar el saludo de 4 puntos en menos de 2 segundos sin perder el equilibrio.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Procesadores, atención! Sigan mi ritmo de palmas exactamente. Si fallamos, activamos el protocolo de respaldo: ¡choque de cinco general y gritamos la afirmación!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">El Coach realiza patrones rítmicos. El grupo debe replicarlos al unísono. Ante el error, se realiza una acción de conexión rápida para reintentar.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Si uno falla, el sistema lo apoya. Somos una red de respaldo inquebrantable."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Sincronizar el ritmo grupal durante 3 secuencias sin errores.</div></li>
                     </ul>
                 </div>
                 <div class="content-bottom">
@@ -131,7 +129,7 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/BMWSuij.png" alt="Escaneo Láser"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/sRIbeM4.png"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
                             <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
@@ -148,14 +146,14 @@
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
                         <p class="phase-title">Fase 2: Fundamentos</p>
-                        <h3 class="activity-title">ESCANEO LÁSER</h3>
-                        <p class="group-name-display">CREADORES S13 - D3</p>
+                        <h3 class="activity-title">LIMPIEZA DE VIRUS DINÁMICA</h3>
+                        <p class="group-name-display">CREADORES S13 - D4</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Crucen la red láser sin tocar los cables! Pero cuidado: si mi escáner (platillo) los apunta, deben congelar su proceso. ¡Velocidad para avanzar, control para frenar!"</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Se colocan elásticos o cuerdas. Los niños deben reptar, saltar o pasar por debajo. El Coach añade el componente de "estatua" visual para trabajar la inhibición motriz.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Tengo el control total de mis movimientos. Soy rápido cuando el sistema lo permite."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Cruzar la red de 3 metros sin activar ninguna "alarma" (tocar cuerdas) ni moverse al ser apuntados.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡El área está infectada! Pongan los conos de pie usando solo sus pies mientras mantienen el aro girando en su brazo. ¡No dejen que el proceso principal se detenga!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Coordinación óculo-pédica y disociación segmentaria. Levantar conos volcados sin usar las manos mientras mantienen un hula-hoop en movimiento.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Puedo corregir errores periféricos sin perder mi enfoque principal. Soy eficiente."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Levantar 3 conos con éxito sin que el aro del brazo caiga al suelo.</div></li>
                     </ul>
                 </div>
                 <div class="content-bottom">
@@ -169,7 +167,7 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/mp1NYGH.png" alt="Placa Energía"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/2WcbRwK.png"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
                             <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
@@ -186,14 +184,14 @@
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
                         <p class="phase-title">Fase 3: El Gran Reto</p>
-                        <h3 class="activity-title">LA GRAN PLACA DE ENERGÍA</h3>
-                        <p class="group-name-display">CREADORES S13 - D3</p>
+                        <h3 class="activity-title">LA GRAN MURALLA DE RESPALDO</h3>
+                        <p class="group-name-display">CREADORES S13 - D4</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Equipo, activen la placa! Sostengan la colchoneta con las pelotas encima. Debemos correr al otro extremo sin que se pierda ni un solo bit de energía. ¡Si cae uno, todos recargamos con saltos!"</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Reto cooperativo. El equipo debe coordinar la velocidad de carrera y la altura de la colchoneta para mantener las pelotas inestables en su lugar.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mi esfuerzo individual mantiene el equilibrio de todo el equipo. Somos un solo procesador."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(5 KC)** Cruzar el gimnasio (15m) en menos de 15 segundos sin perder más de 2 pelotas.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Construyan la torre al final del circuito de vallas. Pero ojo: si la torre cae, todos deben aplicar redundancia y ayudar a levantarla antes de seguir."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Circuito de agilidad con relevos. Cada niño aporta una pieza a la torre. Si la estructura colapsa, el equipo completo debe intervenir.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Los errores son solo oportunidades para demostrar que mi equipo es más fuerte."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(5 KC)** Levantar una torre de 6 niveles y estabilizarla tras una caída simulada.</div></li>
                     </ul>
                 </div>
                 <div class="content-bottom">
@@ -207,7 +205,7 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/ciYhHWD.png" alt="Zapatos Overclock"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/RMgnNVc.png"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
                             <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
@@ -224,14 +222,14 @@
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
                         <p class="phase-title">Fase 4: Mover y Aprender</p>
-                        <h3 class="activity-title">ZAPATOS EN OVERCLOCKING</h3>
-                        <p class="group-name-display">CREADORES S13 - D3</p>
+                        <h3 class="activity-title">PROTOCOLO DE VERIFICACIÓN CRUZADA</h3>
+                        <p class="group-name-display">CREADORES S13 - D4</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡El centro está saturado de datos! Busquen el zapato que NO tenga cordones y que NO sea azul. ¡Tienen que filtrar la información antes de que el tiempo se agote!"</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Juego de discriminación cognitiva con doble negación. Los niños deben ignorar los estímulos obvios para encontrar el objeto que cumple las reglas lógicas.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mi mente es clara bajo presión. Tomo decisiones correctas a gran velocidad."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(2 KC)** Identificar y tocar el zapato correcto en el primer intento sin dudar más de 3 segundos.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Sigan la ruta de los aros A-C-B. Pero cuidado: si cambio un objeto de lugar en el camino, deben corregirlo antes de pasar al siguiente aro. ¡Detecten y reparen!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Carrera de obstáculos con toma de decisiones. Los niños deben identificar cambios inesperados en el entorno y actuar proactivamente.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mi mente detecta fallos al instante. Soy el encargado de mantener el orden."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(2 KC)** Corregir el objeto intruso en menos de 3 segundos mientras se completa la ruta.</div></li>
                     </ul>
                 </div>
                 <div class="content-bottom">
@@ -245,7 +243,7 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/48ZxTCZ.png" alt="Red Energía"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/9gosDaf.png"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
                             <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
@@ -262,14 +260,14 @@
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
                         <p class="phase-title">Fase 5: Reto en Equipo</p>
-                        <h3 class="activity-title">LA RED DE ENERGÍA ELÉCTRICA</h3>
-                        <p class="group-name-display">CREADORES S13 - D3</p>
+                        <h3 class="activity-title">LA ORUGA DE DATOS SINCRONIZADA</h3>
+                        <p class="group-name-display">CREADORES S13 - D4</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡No suelten las manos! Los hula-hoops son ráfagas de energía que deben dar la vuelta completa a la red. ¡Muévanse como un engranaje perfecto!"</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Cooperación física en círculo. Deben pasar los aros por el cuerpo sin romper el contacto de manos, trabajando la flexibilidad y la agilidad grupal.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Soy un canal de energía fluida. Ayudo a mi equipo a ser más rápido."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(3 KC)** Lograr que 2 aros den la vuelta completa al círculo sin que nadie suelte las manos.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Sujeten los tobillos del compañero de atrás. Somos un solo procesador largo. Si la cadena se rompe, debemos reconectarnos antes de avanzar. ¡Sincronía total!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Desplazamiento coordinado en cadena humana. Requiere fuerza en el core y comunicación constante para evitar la ruptura del vínculo.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mi conexión con el equipo es mi mayor fortaleza. Avanzamos como una unidad."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(3 KC)** Recorrer 5 metros sin que ningún eslabón de la oruga se suelte.</div></li>
                     </ul>
                 </div>
                 <div class="content-bottom">
@@ -283,7 +281,7 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/QLUZsOU.png" alt="Descarga Archivos"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/X2MFod0.png"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
                             <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
@@ -300,14 +298,14 @@
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
                         <p class="phase-title">Fase 6: Cierre</p>
-                        <h3 class="activity-title">DESCARGA DE ARCHIVOS</h3>
-                        <p class="group-name-display">CREADORES S13 - D3</p>
+                        <h3 class="activity-title">REINICIO DE FÁBRICA</h3>
+                        <p class="group-name-display">CREADORES S13 - D4</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Inhalen profundo... estamos descargando calma. Exhalen lentamente y bajen sus brazos, dejando que todo el calor del procesador se disipe en el suelo."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Estiramiento estático con énfasis en la respiración. Los niños visualizan la liberación de tensión física acumulada durante las actividades de alta velocidad.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Sé cómo acelerar y cómo pausar. Mi descanso es parte de mi alto rendimiento."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Realizar 3 ciclos de respiración profunda manteniendo el control corporal absoluto.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Tensionen todo el cuerpo... modo error activo. Ahora suelten todo el aire... ¡reinicio exitoso! Sientan cómo la calma vuelve al sistema."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Técnica de relajación por contraste. Inhala y tensa, exhala y relaja. Consolida el estado de calma post-esfuerzo.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Tengo el poder de reiniciar mi energía. Mi calma es mi centro de control."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Lograr el estado de relajación total en menos de 3 repeticiones.</div></li>
                     </ul>
                 </div>
                 <div class="content-bottom">
@@ -319,17 +317,24 @@
     </div>
 
     <script>
-        let cur = 0; const s = document.querySelectorAll('.slide'); let t;
-        const fmt = (sec) => { const m = Math.floor(sec/60); const sc = sec%60; return `${m.toString().padStart(2,'0')}:${sc.toString().padStart(2,'0')}`; };
-        const start = (sl) => {
-            clearInterval(t); let tl = parseInt(sl.dataset.duration); const d = sl.querySelector('.timer-display');
-            d.textContent = fmt(tl);
-            t = setInterval(() => { tl--; if(tl>=0) d.textContent = fmt(tl); else { clearInterval(t); if(cur<s.length-1) navigate(1); } }, 1000);
-        };
-        const navigate = (dir) => { s[cur].classList.remove('active'); s[cur].style.display='none'; cur+=dir; s[cur].classList.add('active'); s[cur].style.display='flex'; start(s[cur]); };
-        const resetTimer = () => start(s[cur]);
-        window.onload = () => start(s[0]);
-        document.addEventListener('keydown', (e) => { if(e.key==='ArrowRight' && cur<s.length-1) navigate(1); if(e.key==='ArrowLeft' && cur>0) navigate(-1); });
+        let cur = 0; const slides = document.querySelectorAll('.slide'); let timer;
+        function fmt(s) { const min = Math.floor(s/60); const sec = s%60; return `${min.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`; }
+        function start(slide) {
+            clearInterval(timer); let t = parseInt(slide.dataset.duration); const d = slide.querySelector('.timer-display');
+            d.textContent = fmt(t);
+            timer = setInterval(() => { t--; if(t>=0) d.textContent = fmt(t); else { clearInterval(timer); if(cur < slides.length-1) navigate(1); } }, 1000);
+        }
+        function navigate(dir) {
+            slides[cur].classList.remove('active'); slides[cur].style.display = 'none';
+            cur += dir; slides[cur].classList.add('active'); slides[cur].style.display = 'flex';
+            start(slides[cur]);
+        }
+        function resetTimer() { start(slides[cur]); }
+        window.onload = () => start(slides[0]);
+        document.addEventListener('keydown', (e) => {
+            if(e.key === 'ArrowRight' && cur < slides.length - 1) navigate(1);
+            if(e.key === 'ArrowLeft' && cur > 0) navigate(-1);
+        });
     </script>
 </body>
 </html>
