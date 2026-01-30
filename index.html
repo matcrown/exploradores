@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KiDOM Sesión: S13 - D4 - Redundancia</title>
+    <title>KiDOM Sesión: S13 - D5 - Optimización Final</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Raleway:wght@800&display=swap" rel="stylesheet">
     
     <style>
@@ -28,7 +28,7 @@
         @media (min-width: 768px) { .slide { flex-direction: row; } }
         .slide.active { display: flex; }
 
-        /* COLUMNA IZQUIERDA */
+        /* ----- COLUMNA IZQUIERDA ----- */
         .image-column {
             width: 100%; background-color: #FFFFFF; padding: 2rem; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; align-items: center; height: 50%; border: 2mm solid var(--kidom-blue); border-right: none;
         }
@@ -51,12 +51,13 @@
         .value-item { font-weight: 700; color: var(--medium-text); font-size: 0.84rem; text-transform: uppercase;}
         .lider-letter { background-color: var(--medium-text); color: #FFFFFF; font-weight: 900; font-size: 0.875rem; border-radius: 50%; width: 1.75rem; height: 1.75rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.25rem; flex-shrink: 0;}
 
-        /* COLUMNA DERECHA */
+        /* ----- COLUMNA DERECHA ----- */
         .content-column {
             width: 100%; background-color: var(--kidom-blue); color: #FFFFFF; padding: 2.5rem; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start; height: 50%; border-top: 2mm solid var(--kidom-yellow-accent); border-right: 2mm solid var(--kidom-yellow-accent); border-bottom: 2mm solid var(--kidom-yellow-accent); border-left: none; position: relative;
         }
         @media (min-width: 768px) { .content-column { width: 50%; height: 100%; } }
 
+        /* LOGO SUPERIOR DERECHO */
         .logo-placeholder { 
             position: absolute; 
             top: 20px; 
@@ -69,19 +70,19 @@
         
         .main-content-wrapper { display: flex; flex-direction: column; flex-grow: 1; min-height: 0; padding-right: 1.5rem; }
         .content-header-area { margin-bottom: 1rem; }
-        .phase-title { color: #FFFFFF; font-size: 1.1rem; font-weight: 700; opacity: 0.85; margin-bottom: 0.25rem; }
-        .activity-title { color: #FFFFFF; font-size: 2.2rem; line-height: 1.1; font-weight: 900; text-transform: uppercase; margin-bottom: 0.5rem; }
-        .group-name-display { color: var(--kidom-yellow-accent); font-size: 1.6rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; } 
+        .phase-title { color: #FFFFFF; font-size: 1rem; font-weight: 700; opacity: 0.85; margin-bottom: 0.25rem; }
+        .activity-title { color: #FFFFFF; font-size: 1.75rem; line-height: 1.1; font-weight: 900; text-transform: uppercase; margin-bottom: 0.5rem; }
+        .group-name-display { color: var(--kidom-yellow-accent); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1rem; } 
         
-        .instructions-list { font-size: 1.4rem; color: #F3F4F6; list-style: none; padding-left: 0; overflow-y: auto; flex-grow: 1; }
-        .instructions-list li { margin-bottom: 1.5rem; line-height: 1.3; }
-        .list-title { display: flex; align-items: center; font-weight: 700; color: #FFFFFF; text-transform: uppercase; font-size: 1rem; margin-bottom: 0.25rem; }
-        .list-icon { margin-right: 0.5rem; font-size: 1.2rem; color: var(--kidom-yellow-accent); }
-        .list-text { padding-left: 1.7rem; color: #E5E7EB; font-weight: 400; }
+        .instructions-list { font-size: 1.1rem; color: #F3F4F6; list-style: none; padding-left: 0; overflow-y: auto; flex-grow: 1; }
+        .instructions-list li { margin-bottom: 1.25rem; line-height: 1.3; }
+        .list-title { display: flex; align-items: center; font-weight: 700; color: #FFFFFF; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.25rem; }
+        .list-icon { margin-right: 0.5rem; font-size: 1.1rem; color: var(--kidom-yellow-accent); }
+        .list-text { padding-left: 1.6rem; color: #E5E7EB; font-weight: 400; }
 
         .content-bottom { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; margin-top: 1rem; }
-        .timer-display { font-family: 'Raleway', sans-serif; font-weight: 800; color: var(--kidom-yellow-accent); font-size: 6rem; line-height: 1; }
-        .nav-button { background-color: #FFFFFF; color: var(--kidom-blue); font-weight: 700; padding: 1rem 2rem; border-radius: 0.5rem; cursor: pointer; border: none; font-size: 1.1rem; }
+        .timer-display { font-family: 'Raleway', sans-serif; font-weight: 800; color: var(--kidom-yellow-accent); font-size: 5rem; line-height: 1; }
+        .nav-button { background-color: #FFFFFF; color: var(--kidom-blue); font-weight: 700; padding: 0.8rem 1.8rem; border-radius: 0.5rem; cursor: pointer; border: none; font-size: 0.9rem; }
     </style>
 </head>
 <body>
@@ -91,7 +92,7 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/Vdh13TC.png"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/8hQN5qH.png" alt="Conexión MFA"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
                             <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
@@ -108,14 +109,14 @@
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
                         <p class="phase-title">Fase 1: Saludo y Afirmación</p>
-                        <h3 class="activity-title">CÓDIGO DE ACCESO GRUPAL</h3>
-                        <p class="group-name-display">CREADORES S13 - D4</p>
+                        <h3 class="activity-title">CONEXIÓN DE SEGURIDAD (MFA)</h3>
+                        <p class="group-name-display">CREADORES S13 - D5</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Procesadores, atención! Sigan mi ritmo de palmas exactamente. Si fallamos, activamos el protocolo de respaldo: ¡choque de cinco general y gritamos la afirmación!"</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">El Coach realiza patrones rítmicos. El grupo debe replicarlos al unísono. Ante el error, se realiza una acción de conexión rápida para reintentar.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Si uno falla, el sistema lo apoya. Somos una red de respaldo inquebrantable."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Sincronizar el ritmo grupal durante 3 secuencias sin errores.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Optimización final! Busquen pareja para el código de acceso: chocamos codos, luego rodillas y terminamos con un salto-giro diciendo la afirmación. ¡Si fallamos, reiniciamos el puerto!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Secuencia rítmica de tres contactos corporales específicos seguida de la afirmación verbal. Fomenta la memoria procedimental y la sincronía.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mi sistema está actualizado y responde con precisión a cada protocolo."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Realizar la secuencia completa sin errores de orden junto a un compañero.</div></li>
                     </ul>
                 </div>
                 <div class="content-bottom">
@@ -129,7 +130,7 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/sRIbeM4.png"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/Vfts73x.png" alt="Transferencia Datos"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
                             <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
@@ -146,14 +147,14 @@
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
                         <p class="phase-title">Fase 2: Fundamentos</p>
-                        <h3 class="activity-title">LIMPIEZA DE VIRUS DINÁMICA</h3>
-                        <p class="group-name-display">CREADORES S13 - D4</p>
+                        <h3 class="activity-title">TRANSFERENCIA DE DATOS AL VACÍO</h3>
+                        <p class="group-name-display">CREADORES S13 - D5</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡El área está infectada! Pongan los conos de pie usando solo sus pies mientras mantienen el aro girando en su brazo. ¡No dejen que el proceso principal se detenga!"</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Coordinación óculo-pédica y disociación segmentaria. Levantar conos volcados sin usar las manos mientras mantienen un hula-hoop en movimiento.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Puedo corregir errores periféricos sin perder mi enfoque principal. Soy eficiente."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Levantar 3 conos con éxito sin que el aro del brazo caiga al suelo.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Mantengan el flujo! En parejas, lancen el platillo de mano a mano mientras saltan vallas de forma lateral. ¡No dejen que el dato caiga ni que el proceso se detenga!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Saltos laterales bipodales sobre micro-vallas mientras se realiza un intercambio de materiales (platillos/aros) con un compañero.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Soy capaz de gestionar un esfuerzo físico constante mientras tomo decisiones visuales rápidas."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Completar 5 saltos y 5 lanzamientos exitosos seguidos sin interrupción.</div></li>
                     </ul>
                 </div>
                 <div class="content-bottom">
@@ -167,7 +168,7 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/2WcbRwK.png"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/Yuw2h5l.png" alt="Overclocking Total"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
                             <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
@@ -184,14 +185,14 @@
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
                         <p class="phase-title">Fase 3: El Gran Reto</p>
-                        <h3 class="activity-title">LA GRAN MURALLA DE RESPALDO</h3>
-                        <p class="group-name-display">CREADORES S13 - D4</p>
+                        <h3 class="activity-title">CIRCUITO DE OVERCLOCKING TOTAL</h3>
+                        <p class="group-name-display">CREADORES S13 - D5</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Construyan la torre al final del circuito de vallas. Pero ojo: si la torre cae, todos deben aplicar redundancia y ayudar a levantarla antes de seguir."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Circuito de agilidad con relevos. Cada niño aporta una pieza a la torre. Si la estructura colapsa, el equipo completo debe intervenir.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Los errores son solo oportunidades para demostrar que mi equipo es más fuerte."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(5 KC)** Levantar una torre de 6 niveles y estabilizarla tras una caída simulada.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Prueba de fuego! Trepen, salten vallas y atraviesen el túnel de cuerdas. Al final, encajen los 3 bits (pelotas). ¡Si fallan, el sistema pide redundancia y repiten el túnel!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Circuito multimodular de alta intensidad: Espaldera + Vallas + Túnel de gateo + Lanzamiento de precisión. Penalización por fallo en puntería para trabajar la resiliencia.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mi energía es inagotable y mi puntería es el resultado de mi calma bajo presión."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(5 KC)** Completar el circuito completo en el tiempo récord del grupo.</div></li>
                     </ul>
                 </div>
                 <div class="content-bottom">
@@ -205,7 +206,7 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/RMgnNVc.png"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/VK0agxy.png" alt="Encriptación Calzado"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
                             <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
@@ -222,14 +223,14 @@
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
                         <p class="phase-title">Fase 4: Mover y Aprender</p>
-                        <h3 class="activity-title">PROTOCOLO DE VERIFICACIÓN CRUZADA</h3>
-                        <p class="group-name-display">CREADORES S13 - D4</p>
+                        <h3 class="activity-title">ENCRIPTACIÓN DE CALZADO</h3>
+                        <p class="group-name-display">CREADORES S13 - D5</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Sigan la ruta de los aros A-C-B. Pero cuidado: si cambio un objeto de lugar en el camino, deben corregirlo antes de pasar al siguiente aro. ¡Detecten y reparen!"</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Carrera de obstáculos con toma de decisiones. Los niños deben identificar cambios inesperados en el entorno y actuar proactivamente.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mi mente detecta fallos al instante. Soy el encargado de mantener el orden."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(2 KC)** Corregir el objeto intruso en menos de 3 segundos mientras se completa la ruta.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Sus datos están ocultos! Recuerden dónde dejaron sus zapatos antes de que los cubriera. Deben navegar el área y recuperarlos usando solo su memoria espacial."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Memoria de corto plazo y orientación espacial. Los niños deben identificar su calzado entre varios estímulos visuales ocultos bajo platillos o telas.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mis archivos están seguros. Mi mente guarda y recupera datos con total claridad."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(2 KC)** Recuperar su calzado en el primer intento sin destapar el de otros compañeros.</div></li>
                     </ul>
                 </div>
                 <div class="content-bottom">
@@ -243,7 +244,7 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/9gosDaf.png"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/Nk4dOqh.png" alt="Reacción Cadena"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
                             <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
@@ -260,14 +261,14 @@
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
                         <p class="phase-title">Fase 5: Reto en Equipo</p>
-                        <h3 class="activity-title">LA ORUGA DE DATOS SINCRONIZADA</h3>
-                        <p class="group-name-display">CREADORES S13 - D4</p>
+                        <h3 class="activity-title">LA REACCIÓN EN CADENA PRO</h3>
+                        <p class="group-name-display">CREADORES S13 - D5</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Sujeten los tobillos del compañero de atrás. Somos un solo procesador largo. Si la cadena se rompe, debemos reconectarnos antes de avanzar. ¡Sincronía total!"</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Desplazamiento coordinado en cadena humana. Requiere fuerza en el core y comunicación constante para evitar la ruptura del vínculo.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mi conexión con el equipo es mi mayor fortaleza. Avanzamos como una unidad."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(3 KC)** Recorrer 5 metros sin que ningún eslabón de la oruga se suelte.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Sincronía sistémica! Pasen el balón usando solo los pies sin que toque el suelo. ¡Debemos completar 3 vueltas perfectas al círculo antes de que el tiempo se agote!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Cooperación motriz compleja. El grupo debe organizarse para mantener un balón en el aire usando habilidades podales colectivas en un espacio reducido.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mi equipo es una red optimizada. Juntos, nuestra capacidad es infinita."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(3 KC)** Lograr al menos una vuelta completa del balón sin caídas.</div></li>
                     </ul>
                 </div>
                 <div class="content-bottom">
@@ -281,7 +282,7 @@
             <div class="image-column">
                 <div class="image-column-wrapper">
                     <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/X2MFod0.png"></div>
+                    <div class="image-guide"><img src="https://i.imgur.com/iQ6YYkj.png" alt="Ahorro Energía"></div>
                     <div class="bottom-values-container">
                         <div class="value-line">
                             <span class="value-item"><span class="lider-letter">L</span>IDERAZGO</span>
@@ -298,14 +299,14 @@
                 <div class="main-content-wrapper">
                     <div class="content-header-area">
                         <p class="phase-title">Fase 6: Cierre</p>
-                        <h3 class="activity-title">REINICIO DE FÁBRICA</h3>
-                        <p class="group-name-display">CREADORES S13 - D4</p>
+                        <h3 class="activity-title">MODO ULTRA AHORRO</h3>
+                        <p class="group-name-display">CREADORES S13 - D5</p>
                     </div>
                     <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Tensionen todo el cuerpo... modo error activo. Ahora suelten todo el aire... ¡reinicio exitoso! Sientan cómo la calma vuelve al sistema."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Técnica de relajación por contraste. Inhala y tensa, exhala y relaja. Consolida el estado de calma post-esfuerzo.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Tengo el poder de reiniciar mi energía. Mi calma es mi centro de control."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Lograr el estado de relajación total en menos de 3 repeticiones.</div></li>
+                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Optimización completada. Tumbados en el suelo, imaginen que su batería se llena de color verde. Su cuerpo pesa, su mente descansa. ¡Sistema listo para el lunes!"</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Visualización guiada y relajación profunda. Fomenta la recuperación metabólica y la integración psicológica del aprendizaje semanal.</div></li>
+                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"He dado mi máximo. Ahora, mi descanso recarga mi genialidad."</div></li>
+                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Permanecer en quietud absoluta durante los 5 minutos de relajación.</div></li>
                     </ul>
                 </div>
                 <div class="content-bottom">
