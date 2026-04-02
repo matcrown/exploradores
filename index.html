@@ -2,336 +2,176 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KiDOM ACADEMY: S14 - D1 - Arquitectura de Sistemas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Raleway:wght@800&display=swap" rel="stylesheet">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Bloom Kids - Mapa Pollito</title>
     <style>
-        :root {
-            --kidom-blue: #2667ff;
-            --kidom-yellow-accent: #FBBF24; 
-            --medium-text: #4B5563; 
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@900&display=swap');
+
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+        body, html {
+            margin: 0; padding: 0; height: 100%; width: 100%;
+            background-color: #1a1a1a; font-family: 'Nunito', sans-serif;
+            overflow: hidden; display: flex; justify-content: center;
         }
 
-        html, body {
-            height: 100%; width: 100%; margin: 0; padding: 0;
-            font-family: 'Montserrat', sans-serif; overflow: hidden;
-            background-color: var(--medium-text);
+        #phone-viewport {
+            width: 100vw; max-width: 430px; height: 100vh;
+            position: relative; overflow: hidden;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
         }
 
-        #slides-container { width: 100%; height: 100%; display: flex; position: relative; }
-        
-        .slide {
-            flex-shrink: 0; width: 100%; height: 100%; display: flex;
-            flex-direction: column; position: relative; overflow: hidden; display: none;
-        }
-        @media (min-width: 768px) { .slide { flex-direction: row; } }
-        .slide.active { display: flex; }
-
-        /* ----- COLUMNA IZQUIERDA ----- */
-        .image-column {
-            width: 100%; background-color: #FFFFFF; padding: 2rem; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; align-items: center; height: 50%; border: 2mm solid var(--kidom-blue); border-right: none;
-        }
-        @media (min-width: 768px) { .image-column { width: 50%; height: 100%; } }
-
-        .image-column-wrapper {
-            display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%; position: relative;
+        #header-ui {
+            position: absolute; top: 0; width: 100%; height: 80px;
+            z-index: 1000; display: flex; justify-content: space-between;
+            align-items: center; padding: 15px 20px;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
         }
 
-        .top-logo-placeholder { max-width: 300px; height: 80px; flex-shrink: 0; margin-bottom: 1rem; }
-        .top-logo-placeholder img { width: 100%; height: 100%; object-fit: contain; }
-        
-        .image-guide {
-            width: 100%; height: 100%; max-width: 90%; max-height: 48vh; display: flex; align-items: center; justify-content: center; flex-grow: 1;
+        .coins-badge {
+            background: white; border-radius: 50px; padding: 6px 15px;
+            display: flex; align-items: center; gap: 8px;
+            box-shadow: 0 4px 0 #ccc; border: 2px solid white;
         }
-        .image-guide img { width: 100%; height: 100%; object-fit: contain; }
 
-        .bottom-values-container { position: relative; width: 90%; flex-shrink: 0; margin-top: 1rem; padding-bottom: 0.5rem; }
-        .value-line { display: flex; justify-content: center; flex-wrap: nowrap; gap: 0.75rem; }
-        .value-item { font-weight: 700; color: var(--medium-text); font-size: 0.84rem; text-transform: uppercase;}
-        .lider-letter { background-color: var(--medium-text); color: #FFFFFF; font-weight: 900; font-size: 0.875rem; border-radius: 50%; width: 1.75rem; height: 1.75rem; display: inline-flex; align-items: center; justify-content: center; margin-right: 0.25rem; flex-shrink: 0;}
-
-        /* ----- COLUMNA DERECHA ----- */
-        .content-column {
-            width: 100%; background-color: var(--kidom-blue); color: #FFFFFF; padding: 2.5rem; box-sizing: border-box; display: flex; flex-direction: column; justify-content: flex-start; height: 50%; border-top: 2mm solid var(--kidom-yellow-accent); border-right: 2mm solid var(--kidom-yellow-accent); border-bottom: 2mm solid var(--kidom-yellow-accent); border-left: none; position: relative;
+        #map-scroll {
+            width: 100%; height: 100%;
+            overflow-y: scroll; scrollbar-width: none;
+            position: relative; scroll-behavior: smooth;
         }
-        @media (min-width: 768px) { .content-column { width: 50%; height: 100%; } }
+        #map-scroll::-webkit-scrollbar { display: none; }
 
-        /* LOGO SUPERIOR DERECHO */
-        .logo-placeholder { 
-            position: absolute; top: 20px; right: 20px; width: 120px; z-index: 100; cursor: pointer;
+        .world-bg {
+            width: 100%; height: 1200px;
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            position: relative;
         }
-        .logo-placeholder img { width: 100%; height: auto; object-fit: contain;}
-        
-        .main-content-wrapper { display: flex; flex-direction: column; flex-grow: 1; min-height: 0; padding-right: 1.5rem; }
-        .content-header-area { margin-bottom: 1rem; }
-        .phase-title { color: #FFFFFF; font-size: 1rem; font-weight: 700; opacity: 0.85; margin-bottom: 0.25rem; }
-        .activity-title { color: #FFFFFF; font-size: 1.75rem; line-height: 1.1; font-weight: 900; text-transform: uppercase; margin-bottom: 0.5rem; }
-        .group-name-display { color: var(--kidom-yellow-accent); font-size: 1.4rem; font-weight: 700; text-transform: uppercase; margin-bottom: 1.5rem; } 
-        
-        .instructions-list { font-size: 1.1rem; color: #F3F4F6; list-style: none; padding-left: 0; overflow-y: auto; flex-grow: 1; }
-        .instructions-list li { margin-bottom: 1.25rem; line-height: 1.3; }
-        .list-title { display: flex; align-items: center; font-weight: 700; color: #FFFFFF; text-transform: uppercase; font-size: 0.9rem; margin-bottom: 0.25rem; }
-        .list-icon { margin-right: 0.5rem; font-size: 1.1rem; color: var(--kidom-yellow-accent); }
-        .list-text { padding-left: 1.6rem; color: #E5E7EB; font-weight: 400; }
 
-        .content-bottom { display: flex; justify-content: space-between; align-items: flex-end; width: 100%; margin-top: 1rem; }
-        .timer-display { font-family: 'Raleway', sans-serif; font-weight: 800; color: var(--kidom-yellow-accent); font-size: 5rem; line-height: 1; }
-        .nav-button { background-color: #FFFFFF; color: var(--kidom-blue); font-weight: 700; padding: 0.8rem 1.8rem; border-radius: 0.5rem; cursor: pointer; border: none; font-size: 0.9rem; }
+        #m1 { background-image: url('https://i.imgur.com/ZSzaWM0.png'); }
+        #m2 { background-image: url('https://i.imgur.com/uo1y9hj.png'); }
+        #m3 { background-image: url('https://i.imgur.com/Dd32UFN.png'); }
+        #m4 { background-image: url('https://i.imgur.com/D3Nh9Yv.png'); }
+        #m5 { background-image: url('https://i.imgur.com/zfM1RWs.png'); }
+
+        /* CONTENEDOR DEL POLLITO */
+        .level-node {
+            position: absolute; width: 80px; height: 80px;
+            display: flex; flex-direction: column; align-items: center;
+            z-index: 10; transform: translateX(-50%);
+        }
+
+        .pollito {
+            width: 85px; height: 85px;
+            background-image: url('https://i.imgur.com/vI45EIV.png'); /* URL DE TU POLLITO */
+            background-size: contain;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        /* NIVEL DESBLOQUEADO (COLOR) */
+        .unlocked {
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.8));
+            animation: bounce 2s infinite ease-in-out;
+        }
+
+        /* NIVEL BLOQUEADO (BLANCO Y NEGRO) */
+        .locked {
+            filter: grayscale(100%) opacity(0.7);
+        }
+
+        .level-tag {
+            background: white; color: #444;
+            padding: 2px 10px; border-radius: 10px;
+            font-size: 12px; font-weight: 900;
+            margin-top: -10px; box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        @keyframes bounce { 
+            0%, 100% { transform: translateY(0) scale(1); } 
+            50% { transform: translateY(-10px) scale(1.05); } 
+        }
+
+        .world-title {
+            position: absolute; top: 20px; left: 50%; transform: translateX(-50%);
+            background: rgba(0,0,0,0.4); color: white; padding: 5px 20px;
+            border-radius: 20px; font-size: 18px; text-transform: uppercase;
+        }
     </style>
 </head>
 <body>
 
-    <div id="slides-container">
-        <div class="slide active" data-duration="300">
-            <div class="image-column">
-                <div class="image-column-wrapper">
-                    <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/WjV9rTu.png" alt="Protocolo Anclaje"></div>
-                    <div class="bottom-values-container">
-                        <div class="value-line">
-                            <span class="value-item"><span class="lider-letter">L</span>iderazgo</span>
-                            <span class="value-item"><span class="lider-letter">I</span>ntegridad</span>
-                            <span class="value-item"><span class="lider-letter">D</span>isciplina</span>
-                            <span class="value-item"><span class="lider-letter">E</span>mpatía</span>
-                            <span class="value-item"><span class="lider-letter">R</span>esponsabilidad</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-column">
-                <div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div>
-                <div class="main-content-wrapper">
-                    <div class="content-header-area">
-                        <p class="phase-title">Fase 1: Saludo y Afirmación</p>
-                        <h3 class="activity-title">PROTOCOLO DE ANCLAJE</h3>
-                        <p class="group-name-display">CREADORES S14 - D1</p>
-                    </div>
-                    <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Arquitectos, a sus puestos! Cuando grite ¡CIMIENTO!, claven los pies en el suelo en sentadilla fuerte y digan: '¡Mi base es fuerte!'. Si digo ¡VIENTO!, balancéense sin despegar los pies."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Activación isométrica de tren inferior. Los niños alternan entre una postura sólida y el control de equilibrio ante la perturbación del "viento".</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Soy el pilar de mi propio sistema. Mi estructura es sólida y nada me derriba."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Mantener la sentadilla inmóvil durante 5 segundos sin perder la forma.</div></li>
-                    </ul>
-                </div>
-                <div class="content-bottom">
-                    <div class="timer-display">05:00</div>
-                    <button class="nav-button" onclick="navigate(1)">SIGUIENTE</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide" data-duration="600">
-            <div class="image-column">
-                <div class="image-column-wrapper">
-                    <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/e6WgVrh.png" alt="Instalación Vigas"></div>
-                    <div class="bottom-values-container">
-                        <div class="value-line">
-                            <span class="value-item"><span class="lider-letter">L</span>iderazgo</span>
-                            <span class="value-item"><span class="lider-letter">I</span>ntegridad</span>
-                            <span class="value-item"><span class="lider-letter">D</span>isciplina</span>
-                            <span class="value-item"><span class="lider-letter">E</span>mpatía</span>
-                            <span class="value-item"><span class="lider-letter">R</span>esponsabilidad</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-column">
-                <div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div>
-                <div class="main-content-wrapper">
-                    <div class="content-header-area">
-                        <p class="phase-title">Fase 2: Fundamentos</p>
-                        <h3 class="activity-title">INSTALACIÓN DE VIGAS MAESTRAS</h3>
-                        <p class="group-name-display">CREADORES S14 - D1</p>
-                    </div>
-                    <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Deben llevar esta viga (cilindro de espuma) sobre su cabeza caminando por la cinta. Si la viga cae, el edificio se inestabiliza. ¡Refuercen con 3 saltos y sigan!"</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Marcha de equilibrio propioceptivo. Los niños deben alinear su postura (cuello y espalda) para equilibrar el objeto mientras se desplazan.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Mantengo mi equilibrio pase lo que pase. Mi enfoque es el soporte de mi estructura."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Recorrer la cinta (4 metros) sin que el cilindro caiga.</div></li>
-                    </ul>
-                </div>
-                <div class="content-bottom">
-                    <div class="timer-display">10:00</div>
-                    <button class="nav-button" onclick="navigate(1)">SIGUIENTE</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide" data-duration="900">
-            <div class="image-column">
-                <div class="image-column-wrapper">
-                    <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/cF1TfUl.png" alt="Rascacielos Antisísmico"></div>
-                    <div class="bottom-values-container">
-                        <div class="value-line">
-                            <span class="value-item"><span class="lider-letter">L</span>iderazgo</span>
-                            <span class="value-item"><span class="lider-letter">I</span>ntegridad</span>
-                            <span class="value-item"><span class="lider-letter">D</span>isciplina</span>
-                            <span class="value-item"><span class="lider-letter">E</span>mpatía</span>
-                            <span class="value-item"><span class="lider-letter">R</span>esponsabilidad</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-column">
-                <div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div>
-                <div class="main-content-wrapper">
-                    <div class="content-header-area">
-                        <p class="phase-title">Fase 3: El Gran Reto</p>
-                        <h3 class="activity-title">EL RASCACIELOS ANTISÍSMICO</h3>
-                        <p class="group-name-display">CREADORES S14 - D1</p>
-                    </div>
-                    <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Crucen la viga con sus bloques. Al final, construyan la torre en la colchoneta. ¡Cuidado! Cuando la tierra tiemble, usen sus manos para estabilizar la base."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Desafío de equilibrio dinámico seguido de motricidad fina. El Coach genera vibraciones leves en la colchoneta mientras los niños aseguran la torre.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Soy resiliente ante los cambios inesperados. Mi base siempre me mantiene a salvo."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(5 KC)** Construir una torre de 4 bloques que soporte el "sismo" final.</div></li>
-                    </ul>
-                </div>
-                <div class="content-bottom">
-                    <div class="timer-display">15:00</div>
-                    <button class="nav-button" onclick="navigate(1)">SIGUIENTE</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide" data-duration="900">
-            <div class="image-column">
-                <div class="image-column-wrapper">
-                    <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/sWL02DJ.png" alt="Planos Geométricos"></div>
-                    <div class="bottom-values-container">
-                        <div class="value-line">
-                            <span class="value-item"><span class="lider-letter">L</span>iderazgo</span>
-                            <span class="value-item"><span class="lider-letter">I</span>ntegridad</span>
-                            <span class="value-item"><span class="lider-letter">D</span>isciplina</span>
-                            <span class="value-item"><span class="lider-letter">E</span>mpatía</span>
-                            <span class="value-item"><span class="lider-letter">R</span>esponsabilidad</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-column">
-                <div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div>
-                <div class="main-content-wrapper">
-                    <div class="content-header-area">
-                        <p class="phase-title">Fase 4: Mover y Aprender</p>
-                        <h3 class="activity-title">PLANOS GEOMÉTRICOS VIVOS</h3>
-                        <p class="group-name-display">CREADORES S14 - D1</p>
-                    </div>
-                    <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Planos listos! Cuando diga una figura (triángulo, cuadrado), formen esa estructura con sus cuerpos en el suelo. ¡Un sistema bien diseñado no tiene fisuras!"</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Juego de organización grupal y conciencia espacial. Los niños deben colaborar físicamente para representar formas geométricas en el plano terrestre.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Soy parte fundamental de un diseño mayor. Mi posición importa para el éxito del grupo."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(2 KC)** Identificar y posicionarse en la figura en menos de 10 segundos.</div></li>
-                    </ul>
-                </div>
-                <div class="content-bottom">
-                    <div class="timer-display">15:00</div>
-                    <button class="nav-button" onclick="navigate(1)">SIGUIENTE</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide" data-duration="420">
-            <div class="image-column">
-                <div class="image-column-wrapper">
-                    <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/wIEC3My.png" alt="Muro Contención"></div>
-                    <div class="bottom-values-container">
-                        <div class="value-line">
-                            <span class="value-item"><span class="lider-letter">L</span>iderazgo</span>
-                            <span class="value-item"><span class="lider-letter">I</span>ntegridad</span>
-                            <span class="value-item"><span class="lider-letter">D</span>isciplina</span>
-                            <span class="value-item"><span class="lider-letter">E</span>mpatía</span>
-                            <span class="value-item"><span class="lider-letter">R</span>esponsabilidad</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-column">
-                <div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div>
-                <div class="main-content-wrapper">
-                    <div class="content-header-area">
-                        <p class="phase-title">Fase 5: Reto en Equipo</p>
-                        <h3 class="activity-title">EL MURO DE CONTENCIÓN</h3>
-                        <p class="group-name-display">CREADORES S14 - D1</p>
-                    </div>
-                    <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"¡Defiendan la base! Formen un muro humano en posición de oso para bloquear los 'impactos' (pelotas) que el otro equipo intenta pasar. ¡Fuerza y unión!"</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Trabajo de fuerza isométrica y resistencia. Un equipo defiende la línea de vallas mientras el otro intenta filtrar balones de espuma por debajo.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"Unidos somos una barrera impenetrable. Mi fuerza protege el esfuerzo de todos."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(3 KC)** Mantener la postura de oso sin apoyar rodillas durante las ráfagas de pelotas.</div></li>
-                    </ul>
-                </div>
-                <div class="content-bottom">
-                    <div class="timer-display">07:00</div>
-                    <button class="nav-button" onclick="navigate(1)">SIGUIENTE</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="slide" data-duration="300">
-            <div class="image-column">
-                <div class="image-column-wrapper">
-                    <div class="top-logo-placeholder"><img src="https://i.imgur.com/7G8CoRs.png"></div>
-                    <div class="image-guide"><img src="https://i.imgur.com/3F355Lt.png" alt="Fraguado Cemento"></div>
-                    <div class="bottom-values-container">
-                        <div class="value-line">
-                            <span class="value-item"><span class="lider-letter">L</span>iderazgo</span>
-                            <span class="value-item"><span class="lider-letter">I</span>ntegridad</span>
-                            <span class="value-item"><span class="lider-letter">D</span>isciplina</span>
-                            <span class="value-item"><span class="lider-letter">E</span>mpatía</span>
-                            <span class="value-item"><span class="lider-letter">R</span>esponsabilidad</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="content-column">
-                <div class="logo-placeholder" onclick="resetTimer()"><img src="https://i.imgur.com/nTLHMUv.png"></div>
-                <div class="main-content-wrapper">
-                    <div class="content-header-area">
-                        <p class="phase-title">Fase 6: Cierre</p>
-                        <h3 class="activity-title">FRAGUADO DEL CEMENTO</h3>
-                        <p class="group-name-display">CREADORES S14 - D1</p>
-                    </div>
-                    <ul class="instructions-list">
-                        <li><div class="list-title"><span class="list-icon">📢</span>GUION</div><div class="list-text">"Tumbados, imaginen que son cemento fresco que se va secando. Inhalen profundo y sientan cómo su cuerpo se vuelve sólido, pesado y tranquilo en el suelo."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏃</span>EJECUCIÓN</div><div class="list-text">Relajación muscular progresiva. Se invita a los niños a soltar la tensión acumulada y a integrar la sensación de firmeza y peso.</div></li>
-                        <li><div class="list-title"><span class="list-icon">💡</span>PNL</div><div class="list-text">"He construido una base fuerte hoy. Mi mente y mi cuerpo descansan en paz."</div></li>
-                        <li><div class="list-title"><span class="list-icon">🏆</span>KC</div><div class="list-text">**(1 KC)** Lograr el estado de quietud total durante el conteo final de 60 segundos.</div></li>
-                    </ul>
-                </div>
-                <div class="content-bottom">
-                    <div class="timer-display">05:00</div>
-                    <button class="nav-button" disabled>FINALIZAR</button>
-                </div>
-            </div>
+<div id="phone-viewport">
+    <div id="header-ui">
+        <div style="color:white; text-shadow: 2px 2px #000; font-size: 18px;">BLOOM KIDS</div>
+        <div class="coins-badge">
+            <span style="font-weight:900;">264</span>
+            <div style="width:20px; height:20px; background:#FFD700; border-radius:50%; border:2px solid #DAA520;"></div>
         </div>
     </div>
 
-    <script>
-        let cur = 0; const slides = document.querySelectorAll('.slide'); let timer;
-        function fmt(s) { const min = Math.floor(s/60); const sec = s%60; return `${min.toString().padStart(2,'0')}:${sec.toString().padStart(2,'0')}`; }
-        function start(slide) {
-            clearInterval(timer); let t = parseInt(slide.dataset.duration); const d = slide.querySelector('.timer-display');
-            d.textContent = fmt(t);
-            timer = setInterval(() => { t--; if(t>=0) d.textContent = fmt(t); else { clearInterval(timer); if(cur < slides.length-1) navigate(1); } }, 1000);
-        }
-        function navigate(dir) {
-            slides[cur].classList.remove('active'); slides[cur].style.display = 'none';
-            cur += dir; slides[cur].classList.add('active'); slides[cur].style.display = 'flex';
-            start(slides[cur]);
-        }
-        function resetTimer() { start(slides[cur]); }
-        window.onload = () => start(slides[0]);
-        document.addEventListener('keydown', (e) => {
-            if(e.key === 'ArrowRight' && cur < slides.length - 1) navigate(1);
-            if(e.key === 'ArrowLeft' && cur > 0) navigate(-1);
+    <div id="map-scroll">
+        </div>
+</div>
+
+<script>
+    const scroller = document.getElementById('map-scroll');
+    const userLevel = 1; 
+
+    // Aquí ajustas las coordenadas manuales para centrar al pollito en el sendero
+    const levelCoords = [
+        // MUNDO 1
+        { l: 1, world: 'm1', left: 62, top: 1100 },
+        { l: 2, world: 'm1', left: 68, top: 1000 },
+        { l: 3, world: 'm1', left: 35, top: 850 },
+        { l: 4, world: 'm1', left: 45, top: 770 },
+        { l: 5, world: 'm1', left: 25, top: 580 },
+        // ... añade los demás siguiendo la misma estructura
+    ];
+
+    const worldsInfo = [
+        { id: 'm5', title: 'Mundo 5', img: 'https://i.imgur.com/zfM1RWs.png' },
+        { id: 'm4', title: 'Mundo 4', img: 'https://i.imgur.com/D3Nh9Yv.png' },
+        { id: 'm3', title: 'Mundo 3', img: 'https://i.imgur.com/Dd32UFN.png' },
+        { id: 'm2', title: 'Mundo 2', img: 'https://i.imgur.com/uo1y9hj.png' },
+        { id: 'm1', title: 'Mundo 1', img: 'https://i.imgur.com/ZSzaWM0.png' }
+    ];
+
+    worldsInfo.forEach(w => {
+        const worldDiv = document.createElement('div');
+        worldDiv.id = w.id;
+        worldDiv.className = 'world-bg';
+        worldDiv.innerHTML = `<div class="world-title">${w.title}</div>`;
+
+        const worldLevels = levelCoords.filter(l => l.world === w.id);
+        
+        worldLevels.forEach(lev => {
+            const node = document.createElement('div');
+            node.className = 'level-node';
+            node.style.left = lev.left + '%';
+            node.style.top = lev.top + 'px';
+
+            const p = document.createElement('div');
+            // Si el nivel es menor o igual al actual, tiene color. Si no, B/N.
+            p.className = `pollito ${lev.l <= userLevel ? 'unlocked' : 'locked'}`;
+            
+            const tag = document.createElement('div');
+            tag.className = 'level-tag';
+            tag.innerText = `Niv. ${lev.l}`;
+
+            node.appendChild(p);
+            node.appendChild(tag);
+            worldDiv.appendChild(node);
         });
-    </script>
+
+        scroller.appendChild(worldDiv);
+    });
+
+    window.onload = () => {
+        scroller.scrollTop = scroller.scrollHeight;
+    };
+</script>
+
 </body>
 </html>
-
